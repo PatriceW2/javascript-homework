@@ -24,6 +24,11 @@ tableData.forEach(ufoData => {
     })
 
 })
-   
+ 
+//create event handler 
+
+button.on("click")
+
+d3.event.preventDefault()
 
 
