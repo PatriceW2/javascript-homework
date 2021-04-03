@@ -35,6 +35,7 @@ function populateTable(data){
 //create event handler 
 
 function dataFilter() {
+    d3.event.preventDefault();
     //alert ("hi");
    let filterData = tableData;
    let dateSearch = d3.select("#datetime").property("value");
@@ -52,4 +53,4 @@ button.on("click", dataFilter);
 
 populateTable(tableData);
 
-d3.event.preventDefault();
+//d3.event.preventDefault();
