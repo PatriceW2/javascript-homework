@@ -5,30 +5,51 @@ var tableData = data;
 
 // YOUR CODE HERE!
 //find the table in the html
-let tbody = d3.select("tbody")
+let tbody = d3.select("tbody");
 
 
 
 //find the button and the form in the html
 
-let button = d3.select("#filter-btn")
-let form = d3.select("#form")
+let button = d3.select("#filter-btn");
+let form = d3.select("#form");
 
 //fill html table
 
-tableData.forEach(ufoData => {
-    let row = tbody.append("tr");
-    Object.values(ufoData).forEach(value => {
-        let cell = row.append("td");
-        cell.text(value);
-    })
+function populateTable(data){
+    tbody.html("");
+    data.forEach(ufoData => {
+        let row = tbody.append("tr");
+        Object.values(ufoData).forEach(value => {
+            let cell = row.append("td");
+            cell.text(value);
+        });
+    
+    });
 
-})
+}
+
+
+
  
 //create event handler 
 
-button.on("click")
+function dataFilter() {
+    //alert ("hi");
+   let filterData = tableData;
+   let dateSearch = d3.select("#datetime").property("value");
+   if (dateSearch) { 
+       let searchResult = tableData.filter(row => row.datetime === dateSearch);
+       populateTable(searchResult);
 
-d3.event.preventDefault()
+   }
+}
 
 
+button.on("click", dataFilter);
+
+//d3.event.preventDefault();
+
+populateTable(tableData);
+
+d3.event.preventDefault();
